@@ -14,6 +14,20 @@ export class AppController {
     return this.appService.getHello();
   }
 
+  @Get('debug_get_page')
+  async getWeb(){
+    try{
+      const response = await firstValueFrom(
+          this.httpService.get('https://ezrillex.github.io'
+              )
+      )
+      return response.data;
+    }
+    catch(err){
+      console.error(err);
+    }
+  }
+
   @Get('debug_image')
   async getImages() {
     try{
